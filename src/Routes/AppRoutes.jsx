@@ -1,10 +1,9 @@
 
-// import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import UserDetails from '../components/UserDetails';
 import TasksComponent from '../components/CRUD TASKS';
 import PageNotFound from '../components/PageNotFound';
 import Home from '../components/Home';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 const AppRoutes = () => {
   return (
