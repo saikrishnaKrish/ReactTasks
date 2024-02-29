@@ -40,7 +40,8 @@ const TasksComponent = () => {
           ? {
               ...item,
               task: selectedTask.task,
-              tdate: new Date.toLocaleDateString(),
+              tdate: new Date().toLocaleDateString(),
+              
             }
           : item
       );
