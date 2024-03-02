@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import "./TasksComponent.css"; // Import your CSS file
-import TodoApplication from "./TodoApplication";
+import "./TodoApplication.css"; // Import your CSS file
 
-const TasksComponent = () => {
+const TodoApplication = () => {
   const [cTask, setCTask] = useState("");
   const [tasksList, setTasksList] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
+  const [tTitle,setTtitle]=useState("")
   const id = useRef(0);
 
   const handleSubmit = (e) => {
@@ -13,8 +13,9 @@ const TasksComponent = () => {
     if (cTask !== "") {
       const newTask = {
         id: id.current++,
+        title:tTitle,
         task: cTask,
-        tdate: new Date().toLocaleDateString(),
+        status:"Pending"
       };
       setTasksList((prevList) => [...prevList, newTask]);
       setCTask("");
@@ -94,26 +95,87 @@ const TasksComponent = () => {
     return tasks;
   };
 
-  return (
-  
-    <div className="tasks-container">
+  const displayTodos=()=>{
+    const tasks=tasks.map((item)=>{
+        return (
+            <tr key={item.id}>
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>{item.title}</td>
+            <td>{item.task}</td>
+            <td>{item.status}</td>
+            <td>
+                <button onClick={onEdit} >Edit</button>
+                <button onClick={handleDelete}>Delete</button>
+            </td>
+        </tr>
+        )
+    })
+  }
 
-      <form>
-        <label className="input-label">Enter the Task:</label>
+  const clearTodos =()=>{}
+  const markAsCompleted=()=>{}
+  
+  return (
+    <div className="tasks-container">
+      Todo Application
+      <form className="input-Container">
+        
+        <input type="text" placeholder="Todo Title"
+        value={tTitle} onChange={(e)=>setTtitle(e.target.value)} 
+        className="task-title"/>
+        
         <input
           type="text"
+          placeholder="Description"
           value={cTask}
           onChange={(e) => setCTask(e.target.value)}
-          className="task-input"
-        />
+          className="task-input"/>
+
         <button onClick={handleSubmit} className="add-btn">
-          Add Task
+          Create Todo
         </button>
       </form>
+
+      <button onClick={clearTodos} className="add-btn">
+          Clear Todos
+        </button>
+        <button onClick={markAsCompleted} className="add-btn">
+          Mark As Completed
+        </button>
+
       <h5>Tasks List</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <input type="checkbox" className="select-all"></input>
+            </td>  
+            <td>
+              Name
+            </td>
+            <td>
+              Description
+            </td>
+            <td>
+              Status
+            </td>
+            <td>
+              Action
+            </td>
+          </tr>  
+        </thead> 
+        <tbody>
+          {
+         
+          }         
+        </tbody> 
+      </table>      
+      
       {tasksList.length > 0 && displayList()}
     </div>
   );
 };
 
-export default TasksComponent;
+export default TodoApplication;
