@@ -1,5 +1,8 @@
 import './App.css'
-import Routing from './components/EComm-FakeStoreAPI/Routings'
+// import RoutingExample2 from './components/EComm-FakeStoreAPI/RoutingExample2'
+// import RoutingExample3 from './components/EComm-FakeStoreAPI/RoutingExample3'
+import RoutingExample4 from './components/EComm-FakeStoreAPI/RoutingExample4'
+// import Routing from './components/EComm-FakeStoreAPI/Routings'
 // import AppRoutes from './Routes/AppRoutes'
 // import CounterComponentWithUseReducer from './components/ContextApiWithUseReducer/CounterExample/CounterComponentWithUseReducer'
 // import PLPpage from './components/EComm/PLPpage'
@@ -13,7 +16,8 @@ function App() {
       <PLPpage/> */}
         {/* <CounterComponentWithUseReducer/> */}
        {/* <ResizeAwareComponent/> */}
-       <Routing/>
+       {/* <RoutingExample3/> */}
+       <RoutingExample4/>
     </>
   )
 }
