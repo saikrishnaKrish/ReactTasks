@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const useApiCall = ( initialUrl, initialData = null ) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
