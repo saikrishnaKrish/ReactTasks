@@ -40,8 +40,22 @@ const Home = () => {
   } = useFetchData(`https://fakestoreapi.com/products/categories`, []);
   console.log(cData);
 
-  const object = basicOps(pData, searchTerm, sortDir, currCategory);
-  const filteredSortedgroupByArr = object.filteredSortedgroupByArr;
+
+      if (products == null) {
+        return;
+    }
+
+// page num and page size
+const [pageSize, setPageSize] = useState(4);
+const [pageNum, setPageNum] = useState(1);
+
+  const object = basicOps(pData, searchTerm, sortDir, currCategory,pageNum, pageSize);
+  const totalPages = object?.totalPages;
+  const filteredSortedgroupByArr = object?.filteredSortedGroupByArr;
+  
+ 
+  console.log("filteredSortedgroupByArr",filteredSortedgroupByArr)
+ 
   // const totalPages=object.totalPages
 
   return (
@@ -90,11 +104,21 @@ const Home = () => {
           <div>
             {/* <p>Data fetched successfully!</p> */}
         {/* products will be there */}
-        <ProductList productList = {filteredSortedgroupByArr} />
+        <>
+          {/* Only render when pData and cData are available */}
+          {pData && cData && (
+            <ProductList productList={filteredSortedgroupByArr} />
+          )}
+        </>
           </div>
         )}
-       
       </main>
+
+        {/* pagination */}
+        {totalPages && filteredSortedgroupByArr && (
+      <div className="pagination">
+        {/* Pagination buttons */}
+      </div>)}
     </>
   );
 };

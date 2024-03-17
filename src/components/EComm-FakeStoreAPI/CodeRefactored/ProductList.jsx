@@ -4,7 +4,7 @@ function ProductList(props) {
     return (
         <>
             {productList == null ? <h3> Loading...</h3> :
-                productList?.map((product) => {
+               productList.length > 0 && productList?.map((product) => {
                     return (<div key={product.id} className = "product">
                         <img src = {product.image} alt = ""
                             className = 'product_image' />

@@ -1,4 +1,5 @@
-function basicOps(products,searchTerm,sortDir,currCategory,pageNum,pageSize){
+function basicOps(products,searchTerm,sortDir,
+    currCategory,pageNum,pageSize){
 
     if(products ==null){
         return;
@@ -53,12 +54,13 @@ function basicOps(products,searchTerm,sortDir,currCategory,pageNum,pageSize){
     }
 
     /************************Pagination *********************/
+    let totalPages = Math.ceil(filteredSortedGroupByArr.length / pageSize);
     let sidx = (pageNum - 1) * pageSize;
     let eidx = sidx + pageSize;
-    filteredSortedgroupByArr = filteredSortedgroupByArr.slice(sidx, eidx);
+    filteredSortedGroupByArr = filteredSortedGroupByArr.slice(sidx, eidx);
     console.log(filteredSortedArr)
     
-    return { filteredSortedgroupByArr };
+    return { filteredSortedGroupByArr, totalPages };
 
 }
 

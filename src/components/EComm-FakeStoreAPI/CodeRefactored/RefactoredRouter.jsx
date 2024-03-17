@@ -3,6 +3,8 @@ import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import Home from "./Home";
+import Cart from "./pages/Cart";
+import User from "./pages/User";
 
 //Adding Category buttons
 const NavBar = () => {
@@ -38,14 +40,14 @@ const RefactoredRouter = () => {
     <BrowserRouter>
       <NavBar></NavBar>
       <Routes>
-        <Route path="/" element={<Home />}>
-          {" "}
-        </Route>
-        <Route path="/about" element={<About />}>
-          {" "}
-        </Route>
+        <Route path="/" element={<Home />}/>
+
+        <Route path="/about" element={<About />}/>
+
         {/* <Route path = "/product" element = {<Product></Product>}></Route> */}
-        <Route path="/Listing" element={<Listing />}></Route>
+        <Route path="/Listing" element={<Listing />} />
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/user" element={<User/>}/>
         {/* <Route path = "/product/:id" element = {<ProductDetails></ProductDetails>}> </Route> */}
         <Route path="/home" element={<Navigate to="/"></Navigate>}></Route>
         {/* <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route> */}
