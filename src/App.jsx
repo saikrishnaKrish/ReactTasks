@@ -1,7 +1,8 @@
 import './App.css'
+import RefactoredRouter from './components/EComm-FakeStoreAPI/CodeRefactored/RefactoredRouter'
 // import RoutingExample2 from './components/EComm-FakeStoreAPI/RoutingExample2'
 // import RoutingExample3 from './components/EComm-FakeStoreAPI/RoutingExample3'
-import RoutingExample4 from './components/EComm-FakeStoreAPI/RoutingExample4'
+// import RoutingExample4 from './components/EComm-FakeStoreAPI/RoutingExample4'
 // import Routing from './components/EComm-FakeStoreAPI/Routings'
 // import AppRoutes from './Routes/AppRoutes'
 // import CounterComponentWithUseReducer from './components/ContextApiWithUseReducer/CounterExample/CounterComponentWithUseReducer'
@@ -17,7 +18,8 @@ function App() {
         {/* <CounterComponentWithUseReducer/> */}
        {/* <ResizeAwareComponent/> */}
        {/* <RoutingExample3/> */}
-       <RoutingExample4/>
+       {/* <RoutingExample4/> */}
+       <RefactoredRouter/>
     </>
   )
 }
