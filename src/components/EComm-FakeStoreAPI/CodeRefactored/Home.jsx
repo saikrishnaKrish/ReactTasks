@@ -117,8 +117,37 @@ const [pageNum, setPageNum] = useState(1);
         {/* pagination */}
         {totalPages && filteredSortedgroupByArr && (
       <div className="pagination">
-        {/* Pagination buttons */}
-      </div>)}
+      <button
+          onClick={() => {
+              if (pageNum == 1)
+                  return
+              setPageNum((pageNum) => pageNum - 1)
+          }}
+
+          disabled={pageNum == 1 ? true : false}
+      >
+          <KeyboardArrowLeftIcon fontSize='large'></KeyboardArrowLeftIcon>
+      </button>
+      <div className="pagenum">
+          {pageNum}
+      </div>
+      <button
+          onClick={() => {
+              if (pageNum == totalPages)
+                  return
+              setPageNum((pageNum) => pageNum + 1)
+          }}
+          disabled={pageNum == totalPages ? true : false}
+
+
+      >
+          <ChevronRightIcon fontSize='large'
+
+          ></ChevronRightIcon>
+      </button>
+  </div>
+    
+    )}
     </>
   );
 };
