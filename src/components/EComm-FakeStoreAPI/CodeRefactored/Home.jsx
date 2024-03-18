@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import ProductList from "./ProductList";
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import Categories from "./Categories";
 
+import Categories from "./Categories";
 import useFetchData from "./Utility/useFetchData";
 import basicOps from "./Utility/basixOps";
-
+import { usePaginationContext } from "./contexts/usePaginationContext";
+import "./Home.css"
+import PaginationComponent from "./components/PaginationComponent";
+import SearchBarComponent from "./components/SearchBarComponent";
 // import { usePaginationContext } from './contexts/PaginationContext';
 
 const Home = () => {
@@ -40,136 +39,120 @@ const Home = () => {
   } = useFetchData(`https://fakestoreapi.com/products/categories`, []);
   console.log(cData);
 
+  if (products == null) {
+    return;
+  }
 
-      if (products == null) {
-        return;
-    }
+  // page num and page size
+  // const [pageSize, setPageSize] = useState(4);
+  // const [pageNum, setPageNum] = useState(1);
+  //  using paginationContext to maintain state across the components
+    // const { setPageSize,
+    //   pageSize,setPageNum} =usePaginationContext();
 
-// page num and page size
-const [pageSize, setPageSize] = useState(4);
-const [pageNum, setPageNum] = useState(1);
-
-  const object = basicOps(pData, searchTerm, sortDir, currCategory,pageNum, pageSize);
+    const { pageSize, pageNum,
+      setPageNum,
+      setPageSize } = usePaginationContext();
+ 
+  const object = basicOps(
+    pData,
+    searchTerm,
+    sortDir,
+    currCategory,
+    pageNum,
+    pageSize
+  );
   const totalPages = object?.totalPages;
   const filteredSortedgroupByArr = object?.filteredSortedGroupByArr;
-  
- 
-  console.log("filteredSortedgroupByArr",filteredSortedgroupByArr)
- 
+
+  // console.log("filteredSortedgroupByArr", filteredSortedgroupByArr);
+
   // const totalPages=object.totalPages
 
   return (
     <>
       <header className="nav_wrapper">
         <div className="search_sortWrapper">
-          <input
-            className="search_input"
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <div className="icons_container">
-            <ArrowCircleUpIcon
-              style={{ color: "white" }}
-              fontSize="large"
-              onClick={() => {
-                setsortDir(1);
-              }}
-            ></ArrowCircleUpIcon>
-            <ArrowCircleDownIcon
-              fontSize="large"
-              style={{ color: "white" }}
-              onClick={() => {
-                setsortDir(-1);
-              }}
-            ></ArrowCircleDownIcon>
-          </div>
+        <SearchBarComponent searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setsortDir={setsortDir}
+        />
         </div>
 
-
-
         <div className="categories_wrapper">
-          <Categories categories={categories} setCurrCategory={setCurrCategory}/>
+              {
+                  cData?.length > 0 && 
+                  <Categories
+                  categories={cData}
+                  setCurrCategory={setCurrCategory}
+                /> 
+              }
         </div>
       </header>
 
       {/* main area */}
       <main className="product_wrapper">
-       
         {pLoad ? (
           <p>Loading...</p>
         ) : cError ? (
           <p>Error: {pError.message}</p>
         ) : (
-          <div>
+          <>
             {/* <p>Data fetched successfully!</p> */}
-        {/* products will be there */}
-        <>
-          {/* Only render when pData and cData are available */}
-          {pData && cData && (
-            <ProductList productList={filteredSortedgroupByArr} />
-          )}
-        </>
-          </div>
+            {/* products will be there */}
+            <>
+              {/* Only render when pData and cData are available */}
+              {pData && cData && (
+                <ProductList productList={filteredSortedgroupByArr} />
+              )}
+            </>
+          </>
         )}
       </main>
 
-        {/* pagination */}
-        {totalPages && filteredSortedgroupByArr && (
-      <div className="pagination">
-      <button
-          onClick={() => {
-              if (pageNum == 1)
-                  return
-              setPageNum((pageNum) => pageNum - 1)
-          }}
-
-          disabled={pageNum == 1 ? true : false}
-      >
-          <KeyboardArrowLeftIcon fontSize='large'></KeyboardArrowLeftIcon>
-      </button>
-      <div className="pagenum">
-          {pageNum}
-      </div>
-      <button
-          onClick={() => {
-              if (pageNum == totalPages)
-                  return
-              setPageNum((pageNum) => pageNum + 1)
-          }}
-          disabled={pageNum == totalPages ? true : false}
-
-
-      >
-          <ChevronRightIcon fontSize='large'
-
-          ></ChevronRightIcon>
-      </button>
-  </div>
-    
-    )}
+      {/* pagination */}
+      {totalPages && filteredSortedgroupByArr && (
+        <PaginationComponent
+        pageNum={pageNum}
+        setPageNum={setPageNum}
+        totalPages={totalPages}        
+        />
+      )}
     </>
   );
 };
 
 export default Home;
 
-
-
-
-
 /***
- * 1. Steps/ 
- *  - INtial Data 
+ * 1. Steps/
+ *  - INtial Data
  *  a. Searching
  *  b. Sorting
  *  c. Categorization
  *  d. Pagination
  *  e. Render the Results
- * 
- * 2. Data 
+ *
+ * 2. Data
  *      1. Products
  *      2. Categories
- * 
- * 
+ *
+ *
  * **/
+
+
+
+      {/* .center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set the height to the viewport height */
+}
+
+// .element {
+//   display: flex;
+//   align-items: center;
+//   width: 15rem;
+//   justify-content: space-between;
+//   /* Additional styling for the element */
+// } */}

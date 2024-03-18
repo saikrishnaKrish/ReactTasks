@@ -1,6 +1,6 @@
 
 function Categories({ categories, setCurrCategory }) {
-
+  console.log("categories",categories)
   return (
     <>
       <button
@@ -11,6 +11,7 @@ function Categories({ categories, setCurrCategory }) {
       >
         All categories
       </button>
+
       {categories.length > 0 &&
         categories?.map((category) => {
           return (

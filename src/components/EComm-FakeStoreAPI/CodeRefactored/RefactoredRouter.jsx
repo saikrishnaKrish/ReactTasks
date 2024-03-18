@@ -5,6 +5,7 @@ import "./index.css";
 import Home from "./Home";
 import Cart from "./pages/Cart";
 import User from "./pages/User";
+import PaginationProvider from "./contexts/usePaginationContext";
 
 //Adding Category buttons
 const NavBar = () => {
@@ -38,6 +39,7 @@ const RefactoredRouter = () => {
 
   return (
     <BrowserRouter>
+    <PaginationProvider>
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -52,6 +54,7 @@ const RefactoredRouter = () => {
         <Route path="/home" element={<Navigate to="/"></Navigate>}></Route>
         {/* <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route> */}
       </Routes>
+      </PaginationProvider>
     </BrowserRouter>
   );
 };

@@ -43,7 +43,7 @@
 
 
 
-
+/* 
 * {
   margin: 0;
   padding: 0;
@@ -89,11 +89,11 @@ body {
   width: 8rem;
   border-radius: 10px;
   background-color: transparent;
-}
+} */
 
 
 /*products section  */
-.product_wrapper {
+/* .product_wrapper {
   margin-top: 3rem;
   margin-left: 2rem;
   margin-right: 2rem;
@@ -119,11 +119,11 @@ body {
   text-align: center;
 }
 
-
+ */
 
 /* pagination  */
 
-.pagination {
+/* .pagination {
   display: flex;
   height: 3rem;
   justify-content: center;
@@ -134,4 +134,4 @@ body {
 .pagenum {
   padding: 0.5rem;
   font-size: 1.2rem;
-}
+} */
