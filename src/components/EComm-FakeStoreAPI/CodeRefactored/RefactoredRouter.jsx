@@ -6,25 +6,27 @@ import Home from "./Home";
 import Cart from "./pages/Cart";
 import User from "./pages/User";
 import PaginationProvider from "./contexts/usePaginationContext";
+import { NavBar } from "./NavBar/NavBar";
+
 
 //Adding Category buttons
-const NavBar = () => {
-  return (
-    <>
-      <li>
-        <Link to="/home">Home</Link>
-      </li>
+// const NavBar = () => {
+//   return (
+//     <>
+//       <li>
+//         <Link to="/home">Home</Link>
+//       </li>
 
-      <li>
-        <Link to="/listing">Listing</Link>
-      </li>
+//       <li>
+//         <Link to="/listing">Listing</Link>
+//       </li>
 
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-    </>
-  );
-};
+//       <li>
+//         <Link to="/about">About</Link>
+//       </li>
+//     </>
+//   );
+// };
 
 const RefactoredRouter = () => {
   function About() {

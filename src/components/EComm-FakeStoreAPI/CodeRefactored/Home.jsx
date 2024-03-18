@@ -8,13 +8,12 @@ import { usePaginationContext } from "./contexts/usePaginationContext";
 import "./Home.css"
 import PaginationComponent from "./components/PaginationComponent";
 import SearchBarComponent from "./components/SearchBarComponent";
-// import { usePaginationContext } from './contexts/PaginationContext';
 
 const Home = () => {
   /***single source of truth for all the products***/
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   /************ all the categories -> a product**********/
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   /**********Action***********/
   /*********************** state ->term with which you want to filter the product list*****************************/
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,7 +38,7 @@ const Home = () => {
   } = useFetchData(`https://fakestoreapi.com/products/categories`, []);
   console.log(cData);
 
-  if (products == null) {
+  if (pData == null) {
     return;
   }
 
