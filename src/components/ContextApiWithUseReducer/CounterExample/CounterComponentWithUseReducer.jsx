@@ -1,6 +1,7 @@
 import { useReducer } from 'react'
 
 const CounterComponentWithUseReducer = () => {
+  
     const initialState = {
          count:0
     }
@@ -14,13 +15,20 @@ const CounterComponentWithUseReducer = () => {
        }
     }
     
+
+
+    
     const [state,dispatch]=useReducer(reducer,initialState);
 
     const handleIncrement =()=>dispatch({type:'INCREMENT'})
     const handleDecrement =()=>dispatch({type:'DECREMENT'})
     const handleInputChange = (stepValue)=>dispatch({type:'SETSTEP',payload:{stepValue}})
+
+
     const count=state.count;
-  return (
+  
+  
+    return (
     <div>
         CounterComponent 
        <h1>  Count: {count} </h1> 

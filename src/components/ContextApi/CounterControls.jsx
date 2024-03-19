@@ -5,8 +5,10 @@ const CounterControls = () => {
     const {handleIncrement,handleDecrement,setStepValue} =useCounter();
     const [inputValue,setInputValue] =useState(1);
     const inputRef =useRef(1);
+
+
     const handleInputValue=()=>{
-        console.log(inputRef.current.value)
+        // console.log(inputRef.current.value)
         if (inputRef.current && inputRef.current.value !== '') {
             const value = Number(inputRef.current.value);
             setStepValue(value);

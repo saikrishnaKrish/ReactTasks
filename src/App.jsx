@@ -1,6 +1,9 @@
 import './App.css'
 import RefactoredRouter from './components/EComm-FakeStoreAPI/CodeRefactored/RefactoredRouter'
-// import RoutingExample2 from './components/EComm-FakeStoreAPI/RoutingExample2'
+import ExampleComponent from './components/Statemanagement/Redux/ExampleComponent'
+import RoutingExample2 from './components/EComm-FakeStoreAPI/RoutingExample2'
+import TasksComponent from './components/CRUD TASKS'
+import TodoListComponent from './components/ToDoList/TodoListComponent'
 // import RoutingExample3 from './components/EComm-FakeStoreAPI/RoutingExample3'
 // import RoutingExample4 from './components/EComm-FakeStoreAPI/RoutingExample4'
 // import Routing from './components/EComm-FakeStoreAPI/Routings'
@@ -17,9 +20,13 @@ function App() {
       <PLPpage/> */}
         {/* <CounterComponentWithUseReducer/> */}
        {/* <ResizeAwareComponent/> */}
+       {/* <RoutingExample2/> */}
        {/* <RoutingExample3/> */}
        {/* <RoutingExample4/> */}
-       <RefactoredRouter/>
+       {/* <RefactoredRouter/> */}
+       {/* <ExampleComponent/> */}
+       {/* <TasksComponent/> */}
+       <TodoListComponent/>
     </>
   )
 }
