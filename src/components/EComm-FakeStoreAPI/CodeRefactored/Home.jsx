@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import ProductList from "./ProductList";
 
 import Categories from "./Categories";
 import useFetchData from "./Utility/useFetchData";
 import basicOps from "./Utility/basixOps";
 import { usePaginationContext } from "./contexts/usePaginationContext";
-import "./Home.css"
+import "./Home.css";
 import PaginationComponent from "./components/PaginationComponent";
 import SearchBarComponent from "./components/SearchBarComponent";
+import { useThemeContext } from "./contexts/useThemeContext";
 
 const Home = () => {
-  /***single source of truth for all the products***/
-  // const [products, setProducts] = useState([]);
-  /************ all the categories -> a product**********/
-  // const [categories, setCategories] = useState([]);
-  /**********Action***********/
+
   /*********************** state ->term with which you want to filter the product list*****************************/
   const [searchTerm, setSearchTerm] = useState("");
   /**************************sort : 0: unsorted, 1: increasing order, -1: decreasing order ************************************/
@@ -31,6 +28,7 @@ const Home = () => {
   console.log(pData);
 
   /**************getting all the categories ********************/
+
   const {
     data: cData,
     isLoading: cLoad,
@@ -46,13 +44,11 @@ const Home = () => {
   // const [pageSize, setPageSize] = useState(4);
   // const [pageNum, setPageNum] = useState(1);
   //  using paginationContext to maintain state across the components
-    // const { setPageSize,
-    //   pageSize,setPageNum} =usePaginationContext();
+  // const { setPageSize,
+  //   pageSize,setPageNum} =usePaginationContext();
 
-    const { pageSize, pageNum,
-      setPageNum,
-      setPageSize } = usePaginationContext();
- 
+  const { pageSize, pageNum, setPageNum, setPageSize } = usePaginationContext();
+
   const object = basicOps(
     pData,
     searchTerm,
@@ -61,6 +57,11 @@ const Home = () => {
     pageNum,
     pageSize
   );
+
+  //with memoization
+  // const memoizedOps = useMemo(()=>basicOps(pData,searchTerm,sortDir,currCategory,pageNum,pageSize),
+  // [pData,searchTerm,sortDir,currCategory,pageNum,pageSize ])
+
   const totalPages = object?.totalPages;
   const filteredSortedgroupByArr = object?.filteredSortedGroupByArr;
 
@@ -68,53 +69,63 @@ const Home = () => {
 
   // const totalPages=object.totalPages
 
+
+    // //optimizing searchTerm
+    // const handleSearchTermChange = useCallback((newSearchTerm)=>{
+    //   setSearchTerm(newSearchTerm);
+    // // setPageNum(1); // Reset page number when search term change
+    // },[setSearchTerm,setPageNum])
+
+const {toggleTheme,theme} = useThemeContext();
+console.log(theme)
   return (
     <>
-      <header className="nav_wrapper">
+      <header className="nav_wrapper" 
+        style={theme=="dark"?
+        {backgroundColor:'#cb993e'}:{backgroundColor:"#18184e"}}>
         <div className="search_sortWrapper">
-        <SearchBarComponent searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          setsortDir={setsortDir}
-        />
+          <SearchBarComponent
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setsortDir={setsortDir}
+          />
+          <button onClick={toggleTheme}>Toggle</button>
         </div>
 
-        <div className="categories_wrapper">
-              {
-                  cData?.length > 0 && 
-                  <Categories
-                  categories={cData}
-                  setCurrCategory={setCurrCategory}
-                /> 
-              }
-        </div>
+          <div className="categories_wrapper">
+            {cData?.length > 0 && (
+              <Categories
+                categories={cData}
+                setCurrCategory={setCurrCategory}
+              />
+            )}
+          </div>
+        {/* )} */}
       </header>
 
       {/* main area */}
-      <main className="product_wrapper">
-        {pLoad ? (
-          <p>Loading...</p>
-        ) : cError ? (
-          <p>Error: {pError.message}</p>
-        ) : (
+      <main className="product_wrapper" style={theme=="dark"?
+        {backgroundColor:'#f2f2f2'}:{backgroundColor:"#f2dea8"}}>
+ 
           <>
             {/* <p>Data fetched successfully!</p> */}
             {/* products will be there */}
             <>
               {/* Only render when pData and cData are available */}
-              {pData && cData && (
+              {pData.length > 0 && cData.length > 0  && (
                 <ProductList productList={filteredSortedgroupByArr} />
               )}
             </>
           </>
-        )}
+        {/* )} */}
       </main>
 
       {/* pagination */}
       {totalPages && filteredSortedgroupByArr && (
         <PaginationComponent
-        pageNum={pageNum}
-        setPageNum={setPageNum}
-        totalPages={totalPages}        
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          totalPages={totalPages}
         />
       )}
     </>
@@ -139,9 +150,8 @@ export default Home;
  *
  * **/
 
-
-
-      {/* .center-container {
+{
+  /* .center-container {
   display: flex;
   align-items: center;
   justify-content: center;

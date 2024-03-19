@@ -19,7 +19,8 @@ export const NavBar = () => {
   
   return (
     <div className='navbar'>
-        <NavLink style={activeState} to={"/"} >Home </NavLink>    
+        <NavLink style={activeState} to={"/"} >Home </NavLink>  
+        {/* <NavLink style={activeState} to="/hooks">HooksExample</NavLink>   */}
         <NavLink style={activeState} to={"/user"} >Users</NavLink>    
         <NavLink style={activeState} to={"/cart"} >Cart</NavLink>    
     </div>

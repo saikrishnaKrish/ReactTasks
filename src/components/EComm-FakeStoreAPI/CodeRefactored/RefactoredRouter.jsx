@@ -8,6 +8,9 @@ import User from "./pages/User";
 import PaginationProvider from "./contexts/usePaginationContext";
 import { NavBar } from "./NavBar/NavBar";
 
+import ProductDetailsComponent from "./components/ProductDetailsComponent";
+import ThemeProvider from "./contexts/useThemeContext";
+
 
 //Adding Category buttons
 // const NavBar = () => {
@@ -37,6 +40,9 @@ const RefactoredRouter = () => {
     return <h3>I am Listing Page</h3>;
   }
 
+  const PageNotFound=()=>{
+    return <p>Page not fount </p>
+  }
 
 
   return (
@@ -44,7 +50,7 @@ const RefactoredRouter = () => {
     <PaginationProvider>
       <NavBar></NavBar>
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<ThemeProvider><Home /></ThemeProvider>}/>
 
         <Route path="/about" element={<About />}/>
 
@@ -52,9 +58,11 @@ const RefactoredRouter = () => {
         <Route path="/Listing" element={<Listing />} />
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/user" element={<User/>}/>
+        {/* <Route path="/hooks" element={<HooksExample/>}/> */}
+        <Route path="/product/:id" element={<ProductDetailsComponent/>}/>
         {/* <Route path = "/product/:id" element = {<ProductDetails></ProductDetails>}> </Route> */}
         <Route path="/home" element={<Navigate to="/"></Navigate>}></Route>
-        {/* <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route> */}
+        <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route>
       </Routes>
       </PaginationProvider>
     </BrowserRouter>
