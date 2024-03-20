@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./todolist.css";
+import uuid4 from "uuid4";
+import TasksBar from "./TasksBar";
+
 const TodoListComponent = () => {
+
+
   //bussiness logic
   const [userInput, setUserInput] = useState("");
   const [taskList, setTasksList] = useState([]);
+  const [sortList,setSortList]=useState([]);
+
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -14,30 +21,42 @@ const TodoListComponent = () => {
     // const currentTasks=taskList;
     // currentTasks.push(userInput);
     // setTasksList(currentTasks)
-    if (userInput !== "") {
-      setTasksList((prevList) => [...prevList, userInput]);
+    if (userInput.trim() !== "") {
+        const newTask={
+            id:uuid4(),
+            task:userInput,
+            status:"active"
+        }
+     
+      setTasksList((prevList) => [...prevList, newTask]);
       setUserInput("");
     }
   };
 
-  const getTasks = () => {
-    return taskList.map((task) => (
-      <>
-        <div className="list-of-tasks">
-          <input type="checkbox" name="" id="" />
-          {task}
-        </div>
-        <hr />
-      </>
-    ));
-  };
+  const handleKeyDown=(e)=>{
+    if(e.key=="Enter"){
+        e.preventDefault();
+        handleAddTask()
+    }
+  }
+
+  const showList=(currStatus)=>{
+    console.log(currStatus)
+    if(currStatus== "active" || currStatus=="completed"){
+      const updatedList = taskList.filter((task)=>task.status==currStatus)
+      setSortList(updatedList);
+    }
+    else
+    setSortList(taskList);
+  }
+
 
   return (
     <div className="todo-container">
       <h1>THINGS TO DO</h1>
       <br />
       <div>
-        {userInput}
+        {/* {userInput} */}
 
         <div>
           <input
@@ -46,15 +65,17 @@ const TodoListComponent = () => {
             value={userInput}
             placeholder="Add a new task"
             onChange={handleUserInput}
+            onKeyDown={handleKeyDown}
           />
           <button className="add-task" onClick={handleAddTask}>
-            {" "}
-            +{" "}
+            {" "} + {" "}
           </button>
         </div>
-        <div>{taskList.length > 0 ? getTasks() : "No tasks to do"}</div>
+      
         {JSON.stringify(taskList)}
       </div>
+
+      <TasksBar taskList={sortList} setTasksList={setTasksList} showList={showList}></TasksBar>
     </div>
   );
 };

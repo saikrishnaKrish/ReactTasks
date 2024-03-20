@@ -19,6 +19,11 @@ input.input-text {
     margin: 10px 15px;
 }
 
-.list-of-tasks{
-    width: 50%;
+.list-of-tasks {
+    text-align: left;
+}
+
+.tasks-list {
+    width: 600px;
+    margin: auto;
 }

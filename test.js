@@ -134,6 +134,29 @@ useMemo((productId)=>{
 
 
 
+let obj=[
+  {
+      "id": "3a7fd76d-5e49-413b-93c2-78ba261ebcb5",
+      "task": "yassd ",
+      "status": "completed"
+  },
+  {
+      "id": "890bef52-7d4b-4427-a7aa-ffae0bb44240",
+      "task": "fmelkfeke",
+      "status": "active"
+  },
+  {
+      "id": "83af689f-aa71-47fd-85b1-79d1c15b2428",
+      "task": "leflkek",
+      "status": "active"
+  }
+]
+
+let cid="83af689f-aa71-47fd-85b1-79d1c15b2428"
+let cObj=obj.find((t)=>t.id==cid)
+console.log(cObj)
+let res={...cObj,status:"completed"}
+console.log(res)
 
 
 
