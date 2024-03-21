@@ -9,8 +9,6 @@ const TodoListComponent = () => {
   //bussiness logic
   const [userInput, setUserInput] = useState("");
   const [taskList, setTasksList] = useState([]);
-  const [sortList,setSortList]=useState([]);
-
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -28,7 +26,8 @@ const TodoListComponent = () => {
             status:"active"
         }
      
-      setTasksList((prevList) => [...prevList, newTask]);
+      // setTasksList((prevList) => [...prevList, newTask]);
+      setTasksList((prevList)=>[...prevList,newTask])
       setUserInput("");
     }
   };
@@ -38,16 +37,6 @@ const TodoListComponent = () => {
         e.preventDefault();
         handleAddTask()
     }
-  }
-
-  const showList=(currStatus)=>{
-    console.log(currStatus)
-    if(currStatus== "active" || currStatus=="completed"){
-      const updatedList = taskList.filter((task)=>task.status==currStatus)
-      setSortList(updatedList);
-    }
-    else
-    setSortList(taskList);
   }
 
 
@@ -72,10 +61,11 @@ const TodoListComponent = () => {
           </button>
         </div>
       
-        {JSON.stringify(taskList)}
+        {/* {JSON.stringify(taskList)} */}
       </div>
 
-      <TasksBar taskList={sortList} setTasksList={setTasksList} showList={showList}></TasksBar>
+      <TasksBar taskList={taskList} 
+      setTasksList={setTasksList}></TasksBar>
     </div>
   );
 };

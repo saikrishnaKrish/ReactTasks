@@ -158,5 +158,7 @@ console.log(cObj)
 let res={...cObj,status:"completed"}
 console.log(res)
 
+let o1=[...cObj,res]
+console.log(o1)
 
 
