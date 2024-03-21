@@ -4,20 +4,6 @@ import basicOps from './helperFunction'
 const TasksBar = ({taskList,setTasksList}) => {
   const [currStatus,setCurrStatus]=useState("All");
   const [itemsLeft,setItemsLeft]=useState(0);
-  // const handleCheckboxChange=(e)=>{
-  //   const cId= e.target.id;
-  //   const updatedList = taskList?.map((task)=>{
-  //       if(task.id==cId){
-  //           // if(task.status=="completed")return {...task,status:"active"}
-  //           // if(task.status=="active")return {...task,status:"completed"}
-  //           return (task.status=="completed"?{...task,status:"active"}:{...task,status:"completed"})
-  //       }
-  //       return task
-  //   })
-  //   setTasksList(updatedList)
-   
-  // }
-
 
   const showList=(currentStatus)=>{
     console.log(currentStatus)
@@ -32,18 +18,22 @@ const TasksBar = ({taskList,setTasksList}) => {
         }
         return task;
     });
-    console.log(updatedList)
+    // console.log(updatedList)
     setTasksList(updatedList);
 }
 
    const getTasks = () => {
    const updatedList = basicOps(taskList,currStatus)
-    
+    if(updatedList.length==0){
+      return <p>No Tasks!!!</p>
+    }
 
     return updatedList?.map((currTask) => (
    
         <div className="list-of-tasks" key={currTask.id} >
-          <input type="checkbox" name="" id={currTask.id} 
+          <input type="checkbox" 
+          checked={currTask.status=="active"?false:true} 
+          name="" id={currTask.id} 
           onChange={ handleCheckboxChange}
            />
              &nbsp;
@@ -62,8 +52,8 @@ const TasksBar = ({taskList,setTasksList}) => {
 
 
   useEffect(()=>{ 
-      const count = taskList?.filter((task)=>task.status=="active").length
-      console.log(count)
+      const count = taskList?.filter((task)=>task.status=="active").length;
+      // console.log(count)
       setItemsLeft(count)
   },[taskList])
 

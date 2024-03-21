@@ -135,3 +135,21 @@ body {
   padding: 0.5rem;
   font-size: 1.2rem;
 } */
+
+
+/* App.css */
+.app-container {
+  display: flex;
+}
+
+.menu {
+  min-width: 400px; 
+  padding: 20px;
+  background-color: #f0f0f0; 
+   height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}

@@ -4,7 +4,9 @@ export default function basicOps(taskList,currStatus){
       const updatedList = taskList.filter((task)=>task.status==currStatus)
         return updatedList;
     }
-    else
-    return taskList;
+    else{
+      
+      return taskList;
+    }
 
 }

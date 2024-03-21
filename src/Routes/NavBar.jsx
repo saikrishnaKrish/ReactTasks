@@ -23,6 +23,13 @@ const NavBar = () => {
         <li>
           <NavLink to="/counterContext">Counter Context example</NavLink>
         </li>
+        <li>
+          <NavLink to="/todoListNew">Todo List Component</NavLink>
+        </li>
+        <li>
+        <NavLink to="/ecomm/home">Ecommerce Component</NavLink>
+        
+        </li>
       </ul>
     </nav>
   );

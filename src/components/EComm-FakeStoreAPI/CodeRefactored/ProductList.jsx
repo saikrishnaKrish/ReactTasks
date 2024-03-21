@@ -8,7 +8,7 @@ function ProductList(props) {
                productList?.length > 0 && productList?.map((product) => {
                     return (
                     <div key={product.id} className = "product">
-                        <Link  to={`/product/${product.id}`}>
+                        <Link  to={`/ecomm/product/${product.id}`}>
                         <img src = {product.image} alt = ""
                             className = 'product_image' />
                         <div className = "product_meta">

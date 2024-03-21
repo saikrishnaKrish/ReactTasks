@@ -1,19 +1,48 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import UserDetails from "../components/UserDetails";
 import TasksComponent from "../components/CRUD TASKS";
 import PageNotFound from "../components/PageNotFound";
-import Home from "../components/Home";
+import HomeComponent from "../components/EComm-FakeStoreAPI/CodeRefactored/Home";
 import TodoApplication from "../components/CRUD TASKS/TodoApplication";
 import NavBar from "./NavBar";
 import EnhancedProductsData from "../components/HOC/Products";
 import CounterComponent from "../components/ContextApi/CounterComponent";
 import { CounterProvider } from "../components/ContextApi/CounterContex/CounterProvider";
+import TodoListComponent from "../components/ToDoList/TodoListComponent";
+import RefactoredRouter from "../components/EComm-FakeStoreAPI/CodeRefactored/RefactoredRouter";
+import ThemeProvider from "../components/EComm-FakeStoreAPI/CodeRefactored/contexts/useThemeContext";
+import ProductDetailsComponent from "../components/EComm-FakeStoreAPI/CodeRefactored/components/ProductDetailsComponent";
+import User from "../components/EComm-FakeStoreAPI/CodeRefactored/pages/User";
+import Cart from "../components/EComm-FakeStoreAPI/CodeRefactored/pages/Cart";
+import Home from '../components/Home'
+ 
+// import ProductDetailsComponent from "./components/ProductDetailsComponent";
+// import ThemeProvider from "./contexts/useThemeContext";
 
 const AppRoutes = () => {
+
+
+  function About() {
+    return <h2>About Page</h2>;
+  }
+
+  function Listing() {
+    return <h3>I am Listing Page</h3>;
+  }
+
+  const PageNotFound=()=>{
+    return <p>Page not fount </p>
+  }
+
   return (
     <Router>
+      <div className="app-container">
+      <div className="menu">
       <NavBar />
-      <hr />
+      </div>
+      {/* <hr /> */}
+        <div className="content">
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/userDetails" element={<UserDetails />} />
@@ -37,8 +66,30 @@ const AppRoutes = () => {
             </>
           }
         />
+        <Route path="/todoListNew" element={<TodoListComponent/>}/>
+        <Route path="/ecomm" element={<RefactoredRouter/>}>
+      
+                <Route path="home" element={<ThemeProvider><HomeComponent /></ThemeProvider>}/>
+
+                <Route  path="about" element={<About />}/>
+
+                {/* <Route path = "product" element = {<Product></Product>}></Route> */}
+                <Route path="Listing" element={<Listing />} />
+                <Route path="cart" element={<Cart/>}/>
+                <Route path="user" element={<User/>}/>
+                {/* <Route path="/hooks" element={<HooksExample/>}/> */}
+                <Route path="product/:id" element={<ProductDetailsComponent/>}/>
+                {/* <Route path = "/product/:id" element = {<ProductDetails></ProductDetails>}> </Route> */}
+              
+                <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route>
+      
+
+        </Route>
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
+        </div>
+
+      </div>
     </Router>
   );
 };

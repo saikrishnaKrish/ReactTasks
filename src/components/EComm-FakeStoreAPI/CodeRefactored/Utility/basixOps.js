@@ -1,7 +1,6 @@
-function basicOps(products,searchTerm,sortDir,
-    currCategory,pageNum,pageSize){
+function basicOps(products,searchTerm,sortDir,currCategory,pageNum,pageSize){
 
-    if(products ==null){
+    if(products == null){
         return;
     }
 
@@ -15,6 +14,7 @@ function basicOps(products,searchTerm,sortDir,
             return lowerTitle.includes(lowerSearchTerm);
     })
     }
+    
     /******************sorting--->re arranging**********************************/ 
     let filteredSortedArr=filteredProductsArr;
     if(sortDir!=0){
