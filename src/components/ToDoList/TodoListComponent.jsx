@@ -2,13 +2,14 @@ import { useState } from "react";
 import "./todolist.css";
 import uuid4 from "uuid4";
 import TasksBar from "./TasksBar";
+import defaultTaskList from './faketasklist'
 
 const TodoListComponent = () => {
 
 
   //bussiness logic
   const [userInput, setUserInput] = useState("");
-  const [taskList, setTasksList] = useState([]);
+  const [taskList, setTasksList] = useState(defaultTaskList);
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
