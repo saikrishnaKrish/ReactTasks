@@ -14,11 +14,14 @@ export const fetchDataFailure=(error)=>({
     payload:error
 })
 
+export const handleInc=()=>({type:INCREMENT})
+export const handleDec=()=>({type:DECREMENT})
+
 export const fetchData=()=> {
     return async (dispatch)=>{
         dispatch(fetchDataRequest());           
         try{
-            const response = await fetch('https://api.example.com/data');
+            const response = await fetch('https://fakestoreapi.com/products/');
             const data = await response.json();
             dispatch(fetchDataSuccess(data));  
             }

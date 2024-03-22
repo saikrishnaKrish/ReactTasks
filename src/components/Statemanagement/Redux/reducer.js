@@ -1,4 +1,4 @@
-import { FETCH_DATA_FAILUTE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./actionTypes"
+import { FETCH_DATA_FAILUTE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, INCREMENT,DECREMENT,INCREMENT_BY_AMOUNT } from "./actionTypes"
 
 const initialState={
     data:[],
@@ -28,6 +28,12 @@ const reducer=(state=initialState,action)=>{
                 isLoading:false,
                 error:action.payload
             }
+        case INCREMENT:
+            return{...state,amount:state.amount+1}
+        case DECREMENT:
+            return {...state,amount:state.amount-1}
+        case INCREMENT_BY_AMOUNT:
+            return {...state,amount:action.payload}
         default:return state
     }
 }
