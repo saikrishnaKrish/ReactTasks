@@ -15,6 +15,8 @@ import ProductDetailsComponent from "../components/EComm-FakeStoreAPI/CodeRefact
 import User from "../components/EComm-FakeStoreAPI/CodeRefactored/pages/User";
 import Cart from "../components/EComm-FakeStoreAPI/CodeRefactored/pages/Cart";
 import Home from '../components/Home'
+import ReduxWithThunkExample from "../components/Statemanagement/Redux";
+import ToolkitExample from "../components/Statemanagement/ReduxToolkit";
  
 // import ProductDetailsComponent from "./components/ProductDetailsComponent";
 // import ThemeProvider from "./contexts/useThemeContext";
@@ -80,11 +82,16 @@ const AppRoutes = () => {
                 {/* <Route path="/hooks" element={<HooksExample/>}/> */}
                 <Route path="product/:id" element={<ProductDetailsComponent/>}/>
                 {/* <Route path = "/product/:id" element = {<ProductDetails></ProductDetails>}> </Route> */}
-              
+                 {/* <ReduxWithThunkExample/> */}
+                {/* <ToolkitExample/> */}
+           
                 <Route path = "*" element = {<PageNotFound></PageNotFound>}> </Route>
       
 
         </Route>
+        <Route path="ReduxWithThunkExample" element={<ReduxWithThunkExample/>}/>
+        <Route path="ToolkitExample" element={<ToolkitExample/>}/>
+
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
         </div>

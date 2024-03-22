@@ -28,8 +28,15 @@ const NavBar = () => {
         </li>
         <li>
         <NavLink to="/ecomm/home">Ecommerce Component</NavLink>
-        
         </li>
+        <li>
+        <NavLink to="/ReduxWithThunkExample">ReduxWithThunk Example</NavLink>
+        </li>
+        <li>
+        <NavLink to="/ToolkitExample">Toolkit Example</NavLink>
+        </li>
+
+        
       </ul>
     </nav>
   );

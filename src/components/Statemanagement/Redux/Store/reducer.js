@@ -4,7 +4,7 @@ const initialState={
     data:[],
     isLoading:false,
     error:"",
-    amount:0,
+    amount:88,
 
 }
 
