@@ -7,7 +7,7 @@ const ReduxWithThunkExample = () => {
   return (
     <div>
         <Provider store={store}>
-        Redux With ThunkExample
+        Redux With Thunk Example
         <ReduxCounter/>
         </Provider>
     </div>

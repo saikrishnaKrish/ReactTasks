@@ -17,6 +17,7 @@ import Cart from "../components/EComm-FakeStoreAPI/CodeRefactored/pages/Cart";
 import Home from '../components/Home'
 import ReduxWithThunkExample from "../components/Statemanagement/Redux";
 import ToolkitExample from "../components/Statemanagement/ReduxToolkit";
+import UserExample from "../components/Statemanagement/ReduxToolkit/ReduxWtihAsyncThunkExample";
  
 // import ProductDetailsComponent from "./components/ProductDetailsComponent";
 // import ThemeProvider from "./contexts/useThemeContext";
@@ -33,7 +34,7 @@ const AppRoutes = () => {
   }
 
   const PageNotFound=()=>{
-    return <p>Page not fount </p>
+    return <p>Page not found!!! </p>
   }
 
   return (
@@ -91,7 +92,7 @@ const AppRoutes = () => {
         </Route>
         <Route path="ReduxWithThunkExample" element={<ReduxWithThunkExample/>}/>
         <Route path="ToolkitExample" element={<ToolkitExample/>}/>
-
+        {/* <Route path="userexample" element={<UserExample/>}/> */}
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
         </div>

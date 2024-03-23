@@ -9,7 +9,7 @@ const  TodoSlice = createSlice({
     reducers:{
         setValue:(state,action)=>{
             state.currentTask=action.payload;
-            console.log("set value",state.currentTask)
+            // console.log("set value",state.currentTask)
         },
         addTask:(state,action)=>{
             
