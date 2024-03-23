@@ -10,19 +10,31 @@ import { NavBar } from "./NavBar/NavBar";
  
 import ProductDetailsComponent from "./components/ProductDetailsComponent";
 import ThemeProvider from "./contexts/useThemeContext";
+import { ErrorBoundary } from "react-error-boundary";
 
 
 
 
 const RefactoredRouter = () => {
-
+  function fallbackRender({ error }) {
+ 
+    return (
+      <div role="alert">
+        <p>Something went wrong:</p>
+        <pre style={{ color: "red" }}>{error.message}</pre>
+      </div>
+    );
+  }
+  
   return (
-    // <BrowserRouter>
+    <ErrorBoundary fallbackRender={fallbackRender}>
+    {/* <BrowserRouter> */}
     <PaginationProvider>
       <NavBar></NavBar>
       <Outlet/>
       </PaginationProvider>
-    // </BrowserRouter>
+    {/* </BrowserRouter> */}
+    </ErrorBoundary>
   );
 };
 
