@@ -11,7 +11,8 @@ import { NavBar } from "./NavBar/NavBar";
 import ProductDetailsComponent from "./components/ProductDetailsComponent";
 import ThemeProvider from "./contexts/useThemeContext";
 import { ErrorBoundary } from "react-error-boundary";
-
+import { Provider } from "react-redux";
+import store from "./Store/Store";
 
 
 
@@ -29,10 +30,13 @@ const RefactoredRouter = () => {
   return (
     <ErrorBoundary fallbackRender={fallbackRender}>
     {/* <BrowserRouter> */}
+    <Provider store={store}>
     <PaginationProvider>
       <NavBar></NavBar>
       <Outlet/>
       </PaginationProvider>
+    </Provider>
+  
     {/* </BrowserRouter> */}
     </ErrorBoundary>
   );
