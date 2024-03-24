@@ -11,7 +11,8 @@ import SearchBarComponent from "./components/SearchBarComponent";
 import { useThemeContext } from "./contexts/useThemeContext";
 
 const Home = () => {
-
+  const FETCH_PRODUCTS_URL="https://fakestoreapi.com/products"
+  const FETCH_CATEGORIES_URL="https://fakestoreapi.com/products/categories"
   /*********************** state ->term with which you want to filter the product list*****************************/
   const [searchTerm, setSearchTerm] = useState("");
   /**************************sort : 0: unsorted, 1: increasing order, -1: decreasing order ************************************/
@@ -24,16 +25,17 @@ const Home = () => {
     data: pData,
     isLoading: pLoad,
     error: pError,
-  } = useFetchData(`https://fakestoreapi.com/products`);
+  } = useFetchData(FETCH_PRODUCTS_URL);
   console.log(pData);
-
+ 
+  
   /**************getting all the categories ********************/
-
+  
   const {
     data: cData,
     isLoading: cLoad,
     error: cError,
-  } = useFetchData(`https://fakestoreapi.com/products/categories`, []);
+  } = useFetchData(FETCH_CATEGORIES_URL, []);
   console.log(cData);
 
   if (pData == null) {

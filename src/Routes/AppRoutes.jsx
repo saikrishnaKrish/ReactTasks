@@ -18,6 +18,7 @@ import Home from '../components/Home'
 import ReduxWithThunkExample from "../components/Statemanagement/Redux";
 import ToolkitExample from "../components/Statemanagement/ReduxToolkit";
 import UserExample from "../components/Statemanagement/ReduxToolkit/ReduxWtihAsyncThunkExample";
+import LazyLoading from "../components/LazyLoading";
  
 // import ProductDetailsComponent from "./components/ProductDetailsComponent";
 // import ThemeProvider from "./contexts/useThemeContext";
@@ -92,7 +93,7 @@ const AppRoutes = () => {
         </Route>
         <Route path="ReduxWithThunkExample" element={<ReduxWithThunkExample/>}/>
         <Route path="ToolkitExample" element={<ToolkitExample/>}/>
-        {/* <Route path="userexample" element={<UserExample/>}/> */}
+        <Route path="LazyLoading" element={<LazyLoading/>}/>
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
         </div>

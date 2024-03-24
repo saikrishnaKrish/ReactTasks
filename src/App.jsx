@@ -12,6 +12,7 @@ import TodoListComponent from './components/ToDoList/TodoListComponent'
 import AppRoutes from './Routes/AppRoutes'
 import ToolkitExample from './components/Statemanagement/ReduxToolkit'
 import ReduxWithThunkExample from './components/Statemanagement/Redux'
+import LazyLoading from './components/LazyLoading'
 // import CounterComponentWithUseReducer from './components/ContextApiWithUseReducer/CounterExample/CounterComponentWithUseReducer'
 // import PLPpage from './components/EComm/PLPpage'
 // import ResizeAwareComponent from './components/resizeWindow/ResizeAwareComponent'
@@ -33,7 +34,7 @@ function App() {
        {/* <TodoListComponent/> */}
        {/* <ReduxWithThunkExample/> */}
         {/* <ToolkitExample/> */}
-
+    {/* <LazyLoading/> */}
     </>
   )
 }

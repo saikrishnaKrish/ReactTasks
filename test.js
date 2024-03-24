@@ -162,3 +162,69 @@ let o1=[...cObj,res]
 console.log(o1)
 
 
+
+
+const debouncefn = (fn,delay)=>{
+  let timeoutId;
+  return function(...args){
+    const context=this;
+    clearTimeout(timeoutId)
+    timeoutId=setTimeout(()=>{
+        fn.apply(context,args)
+      },delay)
+  }
+}
+
+const debounceSearchq =  debouncefn(searchFn,3000);
+<input type="text" onChange={debounceSearchq}/>
+
+
+
+
+
+
+
+
+
+
+
+const throttle = (func, delay) => {
+  let lastCallTime = 0;
+
+  return function(...args) {
+    const context = this;
+    const now = new Date().getTime();
+
+    if (now - lastCallTime >= delay) {
+      func.apply(context, args);
+      lastCallTime = now;
+    }
+  };
+};
+
+// Example usage:
+const throttleScroll = throttle(scrollFunction, 300);
+
+// Attach throttleScroll to window's scroll event
+window.addEventListener('scroll', throttleScroll);
+
+
+
+const debounce = (func, delay) => {
+  let timeoutId;
+  
+  return function(...args) {
+    const context = this;
+    
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+};
+
+// Example usage:
+const debounceSearch = debounce(searchFunction, 300);
+
+// Attach debounceSearch to an input field's onChange event
+<input type="text" onChange={debounceSearch} />

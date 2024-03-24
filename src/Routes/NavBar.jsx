@@ -35,9 +35,9 @@ const NavBar = () => {
         <li>
         <NavLink to="/ToolkitExample">Toolkit Example</NavLink>
         </li>
-        {/* <li>
-        <NavLink to="/userExample"> Redux Async function Example</NavLink>
-        </li> */}
+        <li>
+        <NavLink to="/LazyLoading">LazyLoading Example</NavLink>
+        </li>
 
         
       </ul>
