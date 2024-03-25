@@ -186,6 +186,11 @@ const debounceSearchq =  debouncefn(searchFn,3000);
 
 
 
+// batch timings--
+// how many working days in a week--
+// pay--
+
+
 
 
 const throttle = (func, delay) => {

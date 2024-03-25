@@ -27,19 +27,17 @@ const NavBar = () => {
           <NavLink to="/todoListNew">Todo List Component</NavLink>
         </li>
         <li>
-        <NavLink to="/ecomm/home">Ecommerce Component</NavLink>
+          <NavLink to="/ecomm/home">Ecommerce Component</NavLink>
         </li>
         <li>
-        <NavLink to="/ReduxWithThunkExample">ReduxWithThunk Example</NavLink>
+          <NavLink to="/ReduxWithThunkExample">ReduxWithThunk Example</NavLink>
         </li>
         <li>
-        <NavLink to="/ToolkitExample">Toolkit Example</NavLink>
+          <NavLink to="/ToolkitExample">Toolkit Example</NavLink>
         </li>
         <li>
-        <NavLink to="/LazyLoading">LazyLoading Example</NavLink>
+          <NavLink to="/LazyLoading">LazyLoading Example</NavLink>
         </li>
-
-        
       </ul>
     </nav>
   );
