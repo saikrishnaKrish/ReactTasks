@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux'
 import './App.css'
 
+
 // import RefactoredRouter from './components/EComm-FakeStoreAPI/CodeRefactored/RefactoredRouter'
 // import ExampleComponent from './components/Statemanagement/Redux/ExampleComponent'
 // import RoutingExample2 from './components/EComm-FakeStoreAPI/RoutingExample2'
@@ -16,12 +17,11 @@ import LazyLoading from './components/LazyLoading'
 // import CounterComponentWithUseReducer from './components/ContextApiWithUseReducer/CounterExample/CounterComponentWithUseReducer'
 // import PLPpage from './components/EComm/PLPpage'
 // import ResizeAwareComponent from './components/resizeWindow/ResizeAwareComponent'
-
+import { motion } from "framer-motion"
 function App() {
 
   return (
     <>
-      hi
       <AppRoutes/>
       {/* <PLPpage/> */}
         {/* <CounterComponentWithUseReducer/> */}

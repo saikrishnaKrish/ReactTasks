@@ -38,6 +38,12 @@ const NavBar = () => {
         <li>
           <NavLink to="/LazyLoading">LazyLoading Example</NavLink>
         </li>
+
+        <li>
+          <NavLink to="/passportForm">passport Form</NavLink>
+        </li>
+
+        
       </ul>
     </nav>
   );
